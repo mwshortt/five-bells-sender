@@ -81,23 +81,7 @@ Sender.prototype.setupTransfers = async function () {
     return right
   })
 
-<<<<<<< c9e5cf17a8e195961c44581a575699e062d2df13
-  // Create final (rightmost) transfer
-  finalTransfer.id = finalTransfer.ledger + '/transfers/' + uuid()
-  finalTransfer.part_of_payment = finalPayment.id
-  let expiryDate = new Date(Date.now() + (finalTransfer.expiry_duration * 1000))
-  finalTransfer.expires_at = expiryDate.toISOString()
-  delete finalTransfer.expiry_duration
-  if (this.destination_memo) {
-    finalTransfer.credits[0].memo = this.destination_memo
-  }
-
-  let executionCondition = await this.getCondition()
-
-  // Prepare remaining transfer objects
-=======
   // Build the transfer list.
->>>>>>> [FEATURE] Atomic mode
   let transfers = this.transfers = []
   for (let payment of payments) {
     let transfer = payment.source_transfers[0]
